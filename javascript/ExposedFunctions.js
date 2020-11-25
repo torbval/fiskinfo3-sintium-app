@@ -1,4 +1,22 @@
 
+function isLayerSwitcherOpen() {
+    return layerSwitcher.isOpen();
+}
+
+function closeLayerSwitcher() {
+    layerSwitcher.close()
+}
+
+function isBottomSheetOpen() {
+    return infoDrawer.isOpen() || vesselInfoDrawer.isOpen();
+}
+
+function closeBottomSheet() {
+    infoDrawer.close();
+    vesselInfoDrawer.close();
+    map.getSelectionHandler().clearSelection();
+}
+
 function getToolColors() {
     return JSON.stringify(toolsLayerColors);
 }
@@ -72,12 +90,6 @@ function zoomToUserPosition() {
         const userPosition = ol.proj.transform([position.coords.longitude, position.coords.latitude], 'EPSG:4326', 'EPSG:3857');
         map.zoomToCoordinates([position.coords.longitude, position.coords.latitude], 10)
     });
-}
-
-function closeBottomSheet() {
-    infoDrawer.close();
-    vesselInfoDrawer.close();
-    map.getSelectionHandler().clearSelection();
 }
 
 function setToken(_token) {

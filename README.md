@@ -16,7 +16,10 @@ Function | Description
 ```fail()``` | Triggers fail alert in webview
 ```populateUserPosition(callback)``` | Calls navigator.geolocation.getCurrentPosition with the given callback
 ```zoomToUserPosition()``` | Zooms to user position
+```isBottomSheetOpen()``` | Check if web apps bottom sheet is open
 ```closeBottomSheet()``` | Close web apps bottom sheet
+```isLayerSwitcherOpen()``` | Check if web apps layer switcher is open
+```closeLayerSwitcher()``` | Close web apps layer switcher
 ```setToken(token)``` | Sets authentication token for the Vessels- and Toolslayer
 
 #### Bottom up
