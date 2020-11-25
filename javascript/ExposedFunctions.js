@@ -1,19 +1,43 @@
 
-function getColors() {
-    const stringifiedColors = JSON.stringify(toolsLayerColors);
-    if (!!App.setToolColors) {
-        App.setToolColors(stringifiedColors);
-    }
-    return (stringifiedColors);
+function getToolColors() {
+    return JSON.stringify(toolsLayerColors);
 }
 
-function getLayers() {
-    const layerNames = map.getLayerHandler().getLayerNames().slice().reverse();
-    const stringifiedLayerNames = JSON.stringify(layerNames);
-    if (!!App.setLayers) {
-        App.setLayers(stringifiedLayerNames);
+function requestToolColors() {
+    if (!!App.setToolColors) {
+        const stringifiedColors = getToolColors();
+        App.setToolColors(stringifiedColors);
+    } else {
+        console.warn('Before calling requestColors, App must implement setToolColors')
     }
-    return (stringifiedLayerNames);
+}
+
+function getLayerNames() {
+    const layerNames = map.getLayerHandler().getLayerNames().slice().reverse();
+    return JSON.stringify(layerNames);
+}
+
+function requestLayerNames() {
+    if (!!App.setLayerNames) {
+        const stringifiedLayerNames = getLayers();
+        App.setLayerNames(stringifiedLayerNames);
+    } else {
+        console.warn('Before calling requestLayers, App must implement setLayers')
+    }
+}
+
+function getVisibleLayerNames() {
+    const layerNames = map.getLayerHandler().getVisibleLayerNames().slice().reverse();
+    return JSON.stringify(layerNames);
+}
+
+function requestVisibleLayerNames() {
+    if (!!App.setVisibleLayerNames) {
+        const stringifiedLayerNames = getVisibleLayerNames();
+        App.setVisibleLayerNames(stringifiedLayerNames);
+    } else {
+        console.warn('Before calling requestVisibleLayerNames, App must implement setVisibleLayerNames')
+    }
 }
 
 function toggleLayers(layers) {
